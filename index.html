@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Euro Auto Center | European Automotive Parts &amp; Data Services</title>
+  <meta name="description" content="Euro Auto Center supplies premium European OEM and aftermarket automotive parts, with parts data services, across the Middle East &amp; Africa from Ras Al Khaimah, UAE." />
+  <meta name="theme-color" content="#0a1628" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Euro Auto Center — Your Trusted Parts Partner" />
+  <meta property="og:description" content="Premium European automotive parts and data services across the Middle East &amp; Africa." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1628'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='%233b8bff'%3EEAC%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    /* ============ 1. Design tokens ============ */
+    :root {
+      --navy-950: #060e1c;
+      --navy-900: #0a1628;
+      --navy-800: #0f2140;
+      --navy-700: #16305a;
+      --blue-500: #3b8bff;
+      --blue-400: #63a4ff;
+      --blue-300: #9cc6ff;
+      --ink: #0d1726;
+      --ink-soft: #4a5a72;
+      --line: #e3e9f2;
+      --bg: #ffffff;
+      --bg-soft: #f4f7fb;
+      --white: #ffffff;
+
+      --font-head: "Sora", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      --radius: 14px;
+      --radius-lg: 22px;
+      --shadow: 0 10px 30px -12px rgba(10, 22, 40, .18);
+      --shadow-lg: 0 24px 60px -20px rgba(10, 22, 40, .35);
+      --container: 1180px;
+      --header-h: 76px;
+    }
+
+    /* ============ 2. Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: var(--font-head); line-height: 1.15; margin: 0; letter-spacing: -.02em; }
+    p { margin: 0; }
+    :focus-visible { outline: 3px solid var(--blue-400); outline-offset: 3px; border-radius: 6px; }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 104px 0; }
+    .section--soft { background: var(--bg-soft); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--blue-500);
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+
+    .section-head { max-width: 640px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 42px); margin: 14px 0 16px; }
+    .section-head p { color: var(--ink-soft); font-size: 17px; }
+
+    /* ============ 3. Buttons ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 26px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; border: 2px solid transparent;
+      cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      white-space: nowrap;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn--primary { background: var(--blue-500); color: var(--white); box-shadow: 0 10px 24px -8px rgba(59,139,255,.65); }
+    .btn--primary:hover { background: #2a78ec; transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(59,139,255,.75); }
+    .btn--ghost { border-color: rgba(255,255,255,.28); color: var(--white); }
+    .btn--ghost:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
+    .btn--lg { padding: 18px 34px; font-size: 16px; }
+
+    /* ============ 4. Header ============ */
+    .header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--header-h);
+      display: flex; align-items: center;
+      transition: background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
+    }
+    .header.is-scrolled {
+      background: rgba(10, 22, 40, .88);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      box-shadow: 0 1px 0 rgba(255,255,255,.06);
+    }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+    .logo { display: flex; align-items: center; gap: 12px; color: var(--white); }
+    .logo__mark {
+      width: 42px; height: 42px; border-radius: 11px;
+      display: grid; place-items: center;
+      background: linear-gradient(140deg, var(--blue-500), #1d5fc9);
+      box-shadow: 0 8px 20px -8px rgba(59,139,255,.8);
+    }
+    .logo__mark svg { width: 24px; height: 24px; }
+    .logo__text { font-family: var(--font-head); font-weight: 800; font-size: 16px; line-height: 1.05; letter-spacing: .06em; }
+    .logo__text span { color: var(--blue-400); }
+
+    .nav { display: flex; align-items: center; gap: 34px; }
+    .nav__links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+    .nav__links a { color: rgba(255,255,255,.78); font-size: 15px; font-weight: 500; position: relative; padding: 6px 0; transition: color .2s; }
+    .nav__links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+      background: var(--blue-400); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    }
+    .nav__links a:hover, .nav__links a.is-active { color: var(--white); }
+    .nav__links a:hover::after, .nav__links a.is-active::after { transform: scaleX(1); }
+    .nav .btn { padding: 11px 20px; font-size: 14px; }
+
+    .nav-toggle {
+      display: none; width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      color: var(--white); cursor: pointer; place-items: center;
+    }
+    .nav-toggle svg { width: 22px; height: 22px; }
+
+    /* ============ 5. Hero ============ */
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate;
+      background: var(--navy-900); color: var(--white);
+      padding: calc(var(--header-h) + 96px) 0 120px;
+    }
+    .hero::before { /* grid texture */
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 75%);
+    }
+    .hero__glow {
+      position: absolute; z-index: -1; right: -10%; top: 8%;
+      width: 720px; height: 720px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 60%, rgba(59,139,255,.55), rgba(29,95,201,.25) 40%, transparent 70%);
+      filter: blur(10px);
+    }
+    .hero__gear {
+      position: absolute; z-index: -1; right: 4%; top: 50%; transform: translateY(-50%);
+      width: min(520px, 46vw); color: rgba(156,198,255,.10);
+      animation: spin 80s linear infinite;
+    }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .hero__content { max-width: 660px; }
+    .hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 800; margin: 22px 0 24px; }
+    .hero h1 em { font-style: normal; color: var(--blue-400); }
+    .hero__lead {
+      font-size: clamp(17px, 2vw, 20px); color: rgba(255,255,255,.72);
+      border-left: 2px solid var(--blue-500); padding-left: 20px; max-width: 560px;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+
+    .hero__facts {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      margin-top: 80px; max-width: 820px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .fact { background: rgba(10,22,40,.75); padding: 22px 24px; }
+    .fact__label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-400); font-weight: 600; }
+    .fact__value { font-family: var(--font-head); font-weight: 600; font-size: 17px; margin-top: 6px; }
+
+    /* ============ 6. About ============ */
+    .about { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
+    .about__text h2 { font-size: clamp(30px, 4vw, 42px); margin: 14px 0 22px; }
+    .about__text p { color: var(--ink-soft); font-size: 17px; margin-bottom: 18px; }
+    .about__list { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+    .about__list li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; }
+    .check {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(59,139,255,.12); color: var(--blue-500); display: grid; place-items: center; margin-top: 1px;
+    }
+    .check svg { width: 14px; height: 14px; }
+
+    .about__card {
+      position: relative; background: var(--navy-900); color: var(--white);
+      border-radius: var(--radius-lg); padding: 44px; box-shadow: var(--shadow-lg); overflow: hidden;
+    }
+    .about__card::after {
+      content: ""; position: absolute; right: -80px; bottom: -80px; width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,139,255,.45), transparent 70%);
+    }
+    .info-row { position: relative; z-index: 1; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .info-row:first-child { padding-top: 0; }
+    .info-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .info-row dt { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-400); font-weight: 600; }
+    .info-row dd { margin: 6px 0 0; font-size: 16px; color: rgba(255,255,255,.9); }
+
+    /* ============ 7. Services ============ */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service {
+      position: relative; background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 34px 30px 32px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .service:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+    .service__icon {
+      width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--navy-900); color: var(--blue-400); margin-bottom: 24px;
+      transition: background .25s ease, color .25s ease;
+    }
+    .service:hover .service__icon { background: var(--blue-500); color: var(--white); }
+    .service__icon svg { width: 26px; height: 26px; }
+    .service h3 { font-size: 20px; margin-bottom: 12px; }
+    .service p { color: var(--ink-soft); font-size: 15.5px; }
+    .service__tag {
+      position: absolute; top: 30px; right: 26px;
+      font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--blue-500); background: rgba(59,139,255,.1); padding: 5px 10px; border-radius: 999px;
+    }
+
+    /* ============ 8. Why us ============ */
+    .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+    .why__item { padding: 36px 28px 8px 0; }
+    .why__item + .why__item { padding-left: 28px; border-left: 1px solid var(--line); }
+    .why__num { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--blue-500); }
+    .why__item h3 { font-size: 18px; margin: 14px 0 10px; }
+    .why__item p { color: var(--ink-soft); font-size: 15px; }
+
+    /* ============ 9. Download CTA ============ */
+    .cta {
+      position: relative; overflow: hidden; isolation: isolate;
+      background: linear-gradient(120deg, var(--navy-900) 0%, var(--navy-800) 55%, #133a78 100%);
+      color: var(--white); border-radius: 28px; padding: 64px;
+      display: grid; grid-template-columns: 1.4fr auto; gap: 48px; align-items: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .cta::before {
+      content: ""; position: absolute; z-index: -1; right: -120px; top: -160px; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,139,255,.5), transparent 65%);
+    }
+    .cta h2 { font-size: clamp(28px, 3.6vw, 40px); margin: 14px 0 14px; }
+    .cta p { color: rgba(255,255,255,.72); font-size: 17px; max-width: 560px; }
+    .cta__side { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .cta__meta { font-size: 13px; color: rgba(255,255,255,.55); display: flex; align-items: center; gap: 8px; }
+    .cta__meta svg { width: 16px; height: 16px; }
+
+    /* ============ 10. Contact ============ */
+    .contact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .contact-card {
+      display: flex; flex-direction: column; gap: 14px;
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg);
+      padding: 30px 26px; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+      min-width: 0;
+    }
+    a.contact-card:hover { border-color: var(--blue-500); box-shadow: var(--shadow); transform: translateY(-3px); }
+    .contact-card__icon {
+      width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+      background: rgba(59,139,255,.1); color: var(--blue-500);
+    }
+    .contact-card__icon svg { width: 22px; height: 22px; }
+    .contact-card__label { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+    .contact-card__value { font-weight: 600; font-size: 16px; overflow-wrap: anywhere; color: var(--ink); }
+    .contact-card__hint { font-size: 14px; color: var(--ink-soft); margin-top: auto; }
+
+    /* ============ 11. Footer ============ */
+    .footer { background: var(--navy-950); color: rgba(255,255,255,.6); padding: 56px 0 32px; font-size: 14px; }
+    .footer__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer__tagline { margin-top: 14px; max-width: 320px; }
+    .footer__links { display: flex; gap: 28px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+    .footer__links a:hover { color: var(--white); }
+    .footer__bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; }
+
+    /* ============ 12. Reveal on scroll ============ */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero__gear { animation: none; }
+    }
+
+    /* ============ 13. Responsive ============ */
+    @media (max-width: 1024px) {
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: repeat(2, 1fr); }
+      .why { grid-template-columns: repeat(2, 1fr); }
+      .why__item:nth-child(3) { padding-left: 0; border-left: 0; }
+      .about { gap: 48px; }
+    }
+    @media (max-width: 880px) {
+      .nav-toggle { display: grid; }
+      .nav {
+        position: fixed; top: var(--header-h); left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 20px;
+        background: var(--navy-900); padding: 24px; border-top: 1px solid rgba(255,255,255,.08);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,.5);
+        transform: translateY(-12px); opacity: 0; visibility: hidden;
+        transition: opacity .25s ease, transform .25s ease, visibility .25s;
+      }
+      .nav.is-open { transform: none; opacity: 1; visibility: visible; }
+      .nav__links { flex-direction: column; gap: 4px; }
+      .nav__links a { display: block; padding: 12px 4px; font-size: 17px; }
+      .nav__links a::after { display: none; }
+      .header.menu-open { background: var(--navy-900); }
+
+      .about { grid-template-columns: 1fr; }
+      .cta { grid-template-columns: 1fr; padding: 44px 32px; text-align: left; }
+      .cta__side { align-items: flex-start; }
+      .hero__gear { opacity: .6; right: -20%; width: 80vw; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 72px 0; }
+      .container { padding: 0 16px; }
+      .hero { padding: calc(var(--header-h) + 56px) 0 80px; }
+      .hero__facts { grid-template-columns: 1fr; margin-top: 56px; }
+      .hero__actions .btn { width: 100%; }
+      .services, .contact, .why { grid-template-columns: 1fr; }
+      .why__item, .why__item + .why__item { padding: 28px 0 4px; border-left: 0; }
+      .why__item + .why__item { border-top: 1px solid var(--line); }
+      .about__card { padding: 32px 26px; }
+      .cta { padding: 36px 24px; border-radius: 22px; }
+      .cta .btn { width: 100%; }
+      .cta__side { align-items: stretch; }
+      .cta__meta { justify-content: center; }
+      .section-head { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#home" class="logo" aria-label="Euro Auto Center — home">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+        </span>
+        <span class="logo__text">EURO <span>AUTO</span><br />CENTER</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="euro-auto-center_profile.pdf" class="btn btn--primary" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+          Company Profile
+        </a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" hidden><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <svg class="hero__gear" viewBox="0 0 200 200" aria-hidden="true" fill="currentColor">
+        <path d="M113 8l4 22a72 72 0 0 1 18 8l19-13 18 18-13 19a72 72 0 0 1 8 18l22 4v26l-22 4a72 72 0 0 1-8 18l13 19-18 18-19-13a72 72 0 0 1-18 8l-4 22H87l-4-22a72 72 0 0 1-18-8l-19 13-18-18 13-19a72 72 0 0 1-8-18L11 113V87l22-4a72 72 0 0 1 8-18L28 46l18-18 19 13a72 72 0 0 1 18-8l4-22h26zM100 62a38 38 0 1 0 0 76 38 38 0 0 0 0-76z"/>
+      </svg>
+
+      <div class="container">
+        <div class="hero__content">
+          <span class="eyebrow">Automotive Parts Distribution</span>
+          <h1>Your trusted <em>European</em> parts partner.</h1>
+          <p class="hero__lead">Supplying premium European automotive parts across the Middle East &amp; Africa region, backed by accurate parts data. Precision, reliability, and speed.</p>
+          <div class="hero__actions">
+            <a href="euro-auto-center_profile.pdf" class="btn btn--primary btn--lg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+              Download Company Profile
+            </a>
+            <a href="#contact" class="btn btn--ghost btn--lg">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="hero__facts">
+          <div class="fact">
+            <div class="fact__label">Specialization</div>
+            <div class="fact__value">European OEM &amp; Aftermarket</div>
+          </div>
+          <div class="fact">
+            <div class="fact__label">Territory</div>
+            <div class="fact__value">Middle East &amp; Africa</div>
+          </div>
+          <div class="fact">
+            <div class="fact__label">Headquarters</div>
+            <div class="fact__value">Ras Al Khaimah, UAE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__text reveal">
+          <span class="eyebrow">About Us</span>
+          <h2>Genuine European parts, delivered with precision.</h2>
+          <p>Euro Auto Center is an automotive parts distributor based in Ras Al Khaimah, UAE. We specialize in European OEM and quality aftermarket parts and supply workshops, dealers, and distributors across the Middle East &amp; Africa.</p>
+          <p>We pair a strong supply network with structured parts data, so every order is identified correctly, sourced quickly, and delivered with full traceability.</p>
+          <ul class="about__list">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Genuine and quality-approved brands only</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Accurate part identification by OE number and VIN</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Regional reach from a strategic UAE base</li>
+          </ul>
+        </div>
+
+        <dl class="about__card reveal">
+          <div class="info-row"><dt>Company Name</dt><dd>Euro Auto Center</dd></div>
+          <div class="info-row"><dt>Industry</dt><dd>Automotive Parts Distribution</dd></div>
+          <div class="info-row"><dt>Service Territory</dt><dd>Middle East &amp; Africa</dd></div>
+          <div class="info-row"><dt>Parts Specialization</dt><dd>European OEM &amp; Aftermarket · Genuine &amp; Quality Brands</dd></div>
+          <div class="info-row"><dt>Headquarters</dt><dd>Al Shohada Road, Compass Building FDRK2383<br />Ras Al Khaimah – UAE</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="section section--soft" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Services</span>
+          <h2>Parts supply and parts data, under one roof.</h2>
+          <p>From a single hard-to-find component to full catalog management, we cover the full parts cycle for European vehicles.</p>
+        </div>
+
+        <div class="services">
+          <article class="service reveal">
+            <span class="service__tag">Parts</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+            <h3>European OEM Parts</h3>
+            <p>Genuine original-equipment parts for leading European makes, sourced through trusted supply channels.</p>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Parts</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Quality Aftermarket</h3>
+            <p>Approved aftermarket brands that meet OE specifications, a cost-effective choice without compromising reliability.</p>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Parts</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></div>
+            <h3>Parts Sourcing</h3>
+            <p>Fast location of hard-to-find and specialist components, with OE-number and VIN-based identification.</p>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Data</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+            <h3>Parts Data &amp; Cataloging</h3>
+            <p>Clean, structured parts master data: cross-referencing, catalog cleansing, and ERP-ready item records.</p>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Data</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+            <h3>Inventory &amp; Reporting</h3>
+            <p>Stock analysis, demand insights, and operational reports that help partners plan purchasing and reduce dead stock.</p>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Logistics</span>
+            <div class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v11H1zM14 10h4l3 3v4h-7z"/><circle cx="5.5" cy="18.5" r="1.8"/><circle cx="17.5" cy="18.5" r="1.8"/></svg></div>
+            <h3>Regional Distribution</h3>
+            <p>Reliable B2B supply and dispatch to workshops, dealers, and distributors across the Middle East &amp; Africa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHY US ===================== -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why Euro Auto Center</span>
+          <h2>Built on precision, reliability, and speed.</h2>
+        </div>
+        <div class="why reveal">
+          <div class="why__item">
+            <div class="why__num">01</div>
+            <h3>Precision</h3>
+            <p>The right part the first time, through data-driven identification and cross-referencing.</p>
+          </div>
+          <div class="why__item">
+            <div class="why__num">02</div>
+            <h3>Reliability</h3>
+            <p>Genuine and quality-approved brands only, with consistent supply you can plan around.</p>
+          </div>
+          <div class="why__item">
+            <div class="why__num">03</div>
+            <h3>Speed</h3>
+            <p>Quick quotations and dispatch from our UAE base to keep your vehicles on the road.</p>
+          </div>
+          <div class="why__item">
+            <div class="why__num">04</div>
+            <h3>Partnership</h3>
+            <p>A dedicated contact for every account and long-term relationships across the region.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DOWNLOAD CTA ===================== -->
+    <section class="section section--soft" id="profile" style="padding-top: 0; background: linear-gradient(var(--bg) 50%, var(--bg-soft) 50%);">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <span class="eyebrow" style="color: var(--blue-400);">Company Profile</span>
+            <h2>Get the full picture of Euro Auto Center.</h2>
+            <p>Download our company profile for details on our specialization, service territory, and how to work with us.</p>
+          </div>
+          <div class="cta__side">
+            <a href="euro-auto-center_profile.pdf" class="btn btn--primary btn--lg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+              Download Company Profile
+            </a>
+            <span class="cta__meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              PDF · 100 KB
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section section--soft" id="contact" style="padding-top: 24px;">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Contact Us</span>
+          <h2>Let's talk parts.</h2>
+          <p>Send us your part numbers, VIN, or requirements and our team will get back to you with availability and pricing.</p>
+        </div>
+
+        <div class="contact">
+          <a class="contact-card reveal" href="mailto:info@euro-auto-center.com">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
+            <span class="contact-card__label">General Enquiries</span>
+            <span class="contact-card__value">info@euro-auto-center.com</span>
+            <span class="contact-card__hint">Quotes, partnerships &amp; information</span>
+          </a>
+
+          <a class="contact-card reveal" href="mailto:w.saad@euro-auto-center.com">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+            <span class="contact-card__label">Direct Contact</span>
+            <span class="contact-card__value">w.saad@euro-auto-center.com</span>
+            <span class="contact-card__hint">Account &amp; sales enquiries</span>
+          </a>
+
+          <a class="contact-card reveal" href="tel:+971505579616">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="contact-card__label">Mobile</span>
+            <span class="contact-card__value">+971 50 557 9616</span>
+            <span class="contact-card__hint">Call or WhatsApp</span>
+          </a>
+
+          <div class="contact-card reveal">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="contact-card__label">Headquarters</span>
+            <span class="contact-card__value">Al Shohada Road, Compass Building FDRK2383</span>
+            <span class="contact-card__hint">Ras Al Khaimah – UAE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="#home" class="logo" aria-label="Euro Auto Center — back to top">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+            </span>
+            <span class="logo__text">EURO <span>AUTO</span><br />CENTER</span>
+          </a>
+          <p class="footer__tagline">Premium European automotive parts and data services across the Middle East &amp; Africa.</p>
+        </div>
+        <ul class="footer__links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="euro-auto-center_profile.pdf" download>Company Profile (PDF)</a></li>
+        </ul>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Euro Auto Center. All rights reserved.</span>
+        <span>Ras Al Khaimah, United Arab Emirates</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var nav = document.getElementById('nav');
+      var toggle = document.getElementById('navToggle');
+      var iconOpen = toggle.querySelector('.icon-open');
+      var iconClose = toggle.querySelector('.icon-close');
+
+      // Header background on scroll
+      function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 20); }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Mobile menu
+      function setMenu(open) {
+        nav.classList.toggle('is-open', open);
+        header.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        iconOpen.hidden = open; iconClose.hidden = !open;
+      }
+      toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
+      nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+      // Active nav link
+      var links = document.querySelectorAll('.nav__links a');
+      var sections = Array.prototype.map.call(links, function (l) { return document.querySelector(l.getAttribute('href')); });
+
+      // Reveal on scroll + active section
+      if ('IntersectionObserver' in window) {
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); revealObs.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+        var navObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) {
+              links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id); });
+            }
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(function (s) { if (s) navObs.observe(s); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
