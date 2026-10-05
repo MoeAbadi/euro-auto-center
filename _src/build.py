@@ -76,13 +76,14 @@ def tier_cls(t):
     return {"Premium Aftermarket": "tier tier--premium", "Value Line": "tier tier--value"}.get(t, "tier")
 
 def logo_file(slug):
+    slug = slug.lower()
     for ext in ("svg", "png", "webp"):
         if os.path.exists(os.path.join(SRC, "logos", f"{slug}.{ext}")):
             return f"assets/brands/{slug}.{ext}"
     return None
 
 def wordmark(b, r, tag="div", href=None, cls="wordmark"):
-    lf = logo_file(b["slug"])
+    lf = logo_file(b.get("logo", b["slug"]))
     inner = f'<img src="{r}{lf}" alt="{E(b["name"])} logo" loading="lazy">' if lf else f'<span>{E(b["name"])}</span>'
     if href:
         return f'<a class="{cls}" href="{href}" aria-label="{E(b["name"])}">{inner}</a>'

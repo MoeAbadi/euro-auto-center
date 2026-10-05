@@ -119,7 +119,8 @@ p { margin: 0; }
 .wordmark { display: grid; place-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; text-align: center; transition: border-color .2s, box-shadow .2s; }
 a.wordmark:hover { border-color: var(--blue-500); box-shadow: var(--shadow); }
 .wordmark span { font-family: var(--font-head); font-weight: 800; letter-spacing: .04em; color: var(--navy-800); font-size: 19px; line-height: 1.1; }
-.wordmark img { max-height: 54px; max-width: 80%; width: auto; }
+.wordmark img { max-height: 56px; max-width: 78%; width: auto; height: auto; object-fit: contain; }
+.brand-hero .wordmark img { max-height: 96px; }
 
 /* Brands hub */
 .toolbar { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
@@ -135,7 +136,7 @@ a.wordmark:hover { border-color: var(--blue-500); box-shadow: var(--shadow); }
 .brand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
 .brand-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; transition: transform .25s, box-shadow .25s; }
 .brand-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.brand-card .wordmark { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; height: 104px; background: var(--bg-soft); }
+.brand-card .wordmark { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; height: 104px; background: var(--white); }
 .brand-card__body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .brand-card h3 { font-size: 18px; }
 .brand-card h3 a:hover { color: var(--blue-500); }

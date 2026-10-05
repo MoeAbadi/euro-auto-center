@@ -1,0 +1,40 @@
+EURO AUTO CENTER - BRAND LOGO FILES
+
+Save each official logo in THIS folder, named exactly as below.
+Use .svg (best) or .png (transparent background, at least 400 px wide).
+Then tell Claude 'logos are in' and the site will be rebuilt with them.
+
+Brand                      -> file name (.svg or .png)
+------------------------------------------------------------
+ATE                        -> ate.svg   or   ate.png
+BERU                       -> beru.svg   or   beru.png
+Blue Print                 -> blue-print.svg   or   blue-print.png
+BOGE                       -> boge.svg   or   boge.png
+BorgWarner                 -> borgwarner.svg   or   borgwarner.png
+Bosch                      -> bosch.svg   or   bosch.png
+Brembo                     -> brembo.svg   or   brembo.png
+Dayco                      -> dayco.svg   or   dayco.png
+Delphi                     -> delphi.svg   or   delphi.png
+FAG                        -> fag.svg   or   fag.png
+febi                       -> febi.svg   or   febi.png
+FILTRON                    -> filtron.svg   or   filtron.png
+HEPU                       -> hepu.svg   or   hepu.png
+INA                        -> ina.svg   or   ina.png
+LEMFÖRDER                  -> lemforder.svg   or   lemforder.png
+LuK                        -> luk.svg   or   luk.png
+MAHLE                      -> mahle.svg   or   mahle.png
+MANN-FILTER                -> mann.svg   or   mann.png
+ProVia                     -> provia.svg   or   provia.png
+PURFLUX                    -> purflux.svg   or   purflux.png
+SACHS                      -> sachs.svg   or   sachs.png
+SWAG                       -> swag.svg   or   swag.png
+TEXTAR                     -> textar.svg   or   textar.png
+TRW                        -> trw.svg   or   trw.png
+Valeo                      -> valeo.svg   or   valeo.png
+VDO                        -> vdo.svg   or   vdo.png
+Vitesco Technologies       -> vitesco.svg   or   vitesco.png
+WABCO                      -> wabco.svg   or   wabco.png
+ZF Parts                   -> zf-parts.svg   or   zf-parts.png
+
+Optional (social icons, from each platform's official brand page):
+  ..\social\linkedin.svg, facebook.svg, instagram.svg
