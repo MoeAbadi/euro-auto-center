@@ -10,7 +10,7 @@ SRC = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(os.path.dirname(SRC), "site_out")
 SITE = "https://www.euroautocenterllc.com"
 PDF = "euro-auto-center_profile.pdf"
-TEMPLATE_XLSX = "assets/files/eac-parts-request-template.xlsx"
+TEMPLATE_XLSX = "assets/files/quotation-request-template.xlsx"  # maintained by hand in the repo; not generated
 E = html.escape
 
 SALES = "sales@euro-auto-center.com"
@@ -663,7 +663,7 @@ def build():
         p = os.path.join(SRC, folder)
         if os.path.isdir(p) and os.listdir(p):
             shutil.copytree(p, os.path.join(OUT, dest))
-    make_template(os.path.join(OUT, TEMPLATE_XLSX))
+    # The Excel template is edited by hand and lives in the repo; the build no longer regenerates it.
 
     # sitemap + robots
     with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
