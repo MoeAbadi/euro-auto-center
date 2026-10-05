@@ -15,9 +15,8 @@ E = html.escape
 
 SALES = "sales@euro-auto-center.com"
 DIRECT = "w.saad@euro-auto-center.com"
-PHONE_DISPLAY = "+971 50 557 9616"
-PHONE = "+971505579616"
-WA = "https://wa.me/971505579616"
+WA_DISPLAY = "+961 70 153 623"  # WhatsApp messages only (no phone calls)
+WA = "https://wa.me/96170153623"
 
 OFFICES = [
     dict(key="beirut", label="Headquarters", city="Beirut, Lebanon",
@@ -104,9 +103,9 @@ def ld_org():
             "@type": "AutoPartsStore", "name": f"Euro Auto Center – {o['city']}",
             "address": {"@type": "PostalAddress", "streetAddress": o["ld"]["street"],
                         "addressLocality": o["ld"]["city"], "addressCountry": o["ld"]["country"]},
-            "telephone": PHONE, "email": SALES})
+            "email": SALES})
     data = {"@context": "https://schema.org", "@type": "Organization", "name": "Euro Auto Center",
-            "url": SITE + "/", "logo": SITE + "/eac-logo.png", "email": SALES, "telephone": PHONE,
+            "url": SITE + "/", "logo": SITE + "/eac-logo.png", "email": SALES,
             "areaServed": ["Middle East", "Africa"], "department": locs}
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + "</script>"
 
@@ -182,8 +181,7 @@ def page(path, title, desc, body, active="", extra_head=""):
         <ul>
           <li><a href="mailto:{SALES}">{SALES}</a></li>
           <li><a href="mailto:{DIRECT}">{DIRECT}</a></li>
-          <li><a href="tel:{PHONE}">{PHONE_DISPLAY}</a></li>
-          <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp us</a></li>
+          <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp: {WA_DISPLAY}</a></li>
         </ul>
       </div>
       <div>
@@ -549,8 +547,7 @@ def build():
         <h2 style="font-size:18px;margin-bottom:14px">Prefer to talk?</h2>
         <ul class="side-list">
           <li>{I["mail"]}<a href="mailto:{SALES}">{SALES}</a></li>
-          <li>{I["phone"]}<a href="tel:{PHONE}">{PHONE_DISPLAY}</a></li>
-          <li>{I["chat"]}<a href="{WA}" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+          <li>{I["chat"]}<a href="{WA}" target="_blank" rel="noopener">WhatsApp {WA_DISPLAY}</a></li>
         </ul>
       </div>
     </aside>
@@ -632,8 +629,7 @@ def build():
     <div class="contact-grid">
       <a class="contact-card reveal" href="mailto:{SALES}"><span class="contact-card__icon">{I["mail"]}</span><span class="contact-card__label">Sales &amp; Quotes</span><span class="contact-card__value">{SALES}</span><span class="contact-card__hint">General and quotation requests</span></a>
       <a class="contact-card reveal" href="mailto:{DIRECT}"><span class="contact-card__icon">{I["user"]}</span><span class="contact-card__label">Commercial Contact</span><span class="contact-card__value">{DIRECT}</span><span class="contact-card__hint">Accounts and partnerships</span></a>
-      <a class="contact-card reveal" href="tel:{PHONE}"><span class="contact-card__icon">{I["phone"]}</span><span class="contact-card__label">Phone</span><span class="contact-card__value">{PHONE_DISPLAY}</span><span class="contact-card__hint">Call us during business hours</span></a>
-      <a class="contact-card reveal" href="{WA}" target="_blank" rel="noopener"><span class="contact-card__icon">{I["chat"]}</span><span class="contact-card__label">WhatsApp</span><span class="contact-card__value">{PHONE_DISPLAY}</span><span class="contact-card__hint">Send part lists and photos</span></a>
+      <a class="contact-card reveal" href="{WA}" target="_blank" rel="noopener"><span class="contact-card__icon">{I["chat"]}</span><span class="contact-card__label">WhatsApp</span><span class="contact-card__value">{WA_DISPLAY}</span><span class="contact-card__hint">Messages only: send part numbers, lists and photos</span></a>
     </div>
   </div>
 </section>
@@ -652,7 +648,7 @@ def build():
 </section>
 '''
     urls.append(page("contact/index.html", "Contact | Euro Auto Center",
-                     f"Contact Euro Auto Center: {SALES}, {PHONE_DISPLAY} (phone and WhatsApp). Headquarters in Beirut, Lebanon, and regional branch in Ras Al Khaimah, UAE.",
+                     f"Contact Euro Auto Center: {SALES}, WhatsApp {WA_DISPLAY}. Headquarters in Beirut, Lebanon, and regional branch in Ras Al Khaimah, UAE.",
                      contact, "contact/", ld_org()))
 
     # ---- assets ----
@@ -715,7 +711,7 @@ def make_template(path):
     ws.freeze_panes = "A5"
     ws.auto_filter.ref = "A4:I204"
     info = wb.create_sheet("Contact")
-    for i, (k, v) in enumerate([("Email", SALES), ("Commercial", DIRECT), ("Phone / WhatsApp", PHONE_DISPLAY),
+    for i, (k, v) in enumerate([("Email", SALES), ("Commercial", DIRECT), ("WhatsApp (messages)", WA_DISPLAY),
                                 ("Headquarters", ", ".join(OFFICES[0]["lines"])), ("Regional Branch", ", ".join(OFFICES[1]["lines"])),
                                 ("Website", SITE)], start=1):
         info.cell(row=i, column=1, value=k).font = Font(bold=True)

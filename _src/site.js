@@ -12,7 +12,7 @@
   };
 
   var SALES_EMAIL = 'sales@euro-auto-center.com';
-  var WHATSAPP = '971505579616';
+  var WHATSAPP = '96170153623';
 
   document.documentElement.classList.remove('no-js');
 
