@@ -7,7 +7,7 @@
      Icons with an empty link show as "soon" and are not clickable. */
   var SOCIAL = {
     linkedin: '',
-    facebook: '',
+    facebook: 'https://www.facebook.com/eacsarl',
     instagram: ''
   };
 
