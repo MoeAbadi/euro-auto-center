@@ -21,7 +21,8 @@ WA = "https://wa.me/96170153623"
 OFFICES = [
     dict(key="beirut", label="Headquarters", city="Beirut, Lebanon",
          lines=["Mar Maroun Street, 33 Sector 5", "Bouchrieh, Beirut – Lebanon"],
-         map_q="Mar Maroun Street, Bouchrieh, Lebanon",
+         map_q="Euro Auto Center, Mar Maroun Street, Bouchrieh, Lebanon",
+         maps_link="https://maps.app.goo.gl/doYRpxkkqRisMGr18",
          ld=dict(street="Mar Maroun Street, 33 Sector 5, Bouchrieh", city="Beirut", country="LB")),
     dict(key="rak", label="Regional Branch", city="Ras Al Khaimah, UAE",
          lines=["Al Shohada Road, Compass Building FDRK2383", "Ras Al Khaimah – UAE"],
@@ -610,7 +611,7 @@ def build():
     <h3>{o["city"]}</h3>
     <address>Euro Auto Center<br>{"<br>".join(E(l) for l in o["lines"])}</address>
     <div class="location__actions">
-      <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query={q}" target="_blank" rel="noopener">{I["pin"]}Open in Google Maps</a>
+      <a class="btn btn--primary btn--sm" href="{o.get('maps_link') or ('https://www.google.com/maps/search/?api=1&amp;query=' + q)}" target="_blank" rel="noopener">{I["pin"]}Open in Google Maps</a>
       <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination={q}" target="_blank" rel="noopener">{I["route"]}Directions</a>
     </div>
   </div>
