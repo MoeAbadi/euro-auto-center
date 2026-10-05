@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote | Euro Auto Center</title>
+<meta name="description" content="Request a quotation for European OEM and aftermarket parts. Send OE numbers, part numbers, quantities and VIN by email or WhatsApp, or attach an Excel parts list.">
+<link rel="canonical" href="https://www.euroautocenterllc.com/request-quote/">
+<meta name="theme-color" content="#0a1628">
+<meta property="og:title" content="Request a Quote | Euro Auto Center">
+<meta property="og:description" content="Request a quotation for European OEM and aftermarket parts. Send OE numbers, part numbers, quantities and VIN by email or WhatsApp, or attach an Excel parts list.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.euroautocenterllc.com/request-quote/">
+<meta property="og:image" content="https://www.euroautocenterllc.com/eac-logo.png">
+<link rel="icon" type="image/png" href="../eac-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="../" class="logo" aria-label="Euro Auto Center home">
+      <span class="logo__mark"><img src="../eac-logo.png" alt="EAC" width="65" height="24"></span>
+      <span class="logo__text">EURO <span>AUTO</span><br>CENTER</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul class="nav__links"><li><a href="../">Home</a></li><li><a href="../about-us/">About Us</a></li><li><a href="../brands-catalogs/">Brands &amp; Catalogs</a></li><li><a href="../contact/">Contact</a></li></ul>
+      <a href="../request-quote/" class="btn btn--primary">Request a Quote</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" hidden aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span>Request a Quote</span></nav>
+    <h1>Request a Quote</h1>
+    <p>Send us OE or part numbers, quantities and your VIN. We reply with availability, price and lead time.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container form-wrap">
+    <form class="panel" id="quoteForm" novalidate>
+      <fieldset>
+        <legend>Your details</legend>
+        <div class="fields">
+          <div class="field"><label for="qName">Full name *</label><input id="qName" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="qCompany">Company <small>(optional)</small></label><input id="qCompany" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="qEmail">Email *</label><input id="qEmail" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="qPhone">Phone / WhatsApp</label><input id="qPhone" type="tel" autocomplete="tel"></div>
+          <div class="field field--full"><label for="qCountry">Country</label><input id="qCountry" type="text" autocomplete="country-name"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Vehicle <small class="muted" style="font-weight:400;font-family:var(--font-body)">(optional, helps us match the right part)</small></legend>
+        <div class="fields">
+          <div class="field field--full"><label for="qVin">VIN (chassis number)</label><input id="qVin" type="text" maxlength="17" autocomplete="off" style="text-transform:uppercase" placeholder="17 characters"></div>
+          <div class="field"><label for="qMake">Make</label><input id="qMake" type="text" placeholder="e.g. Volkswagen"></div>
+          <div class="field"><label for="qModel">Model &amp; year</label><input id="qModel" type="text" placeholder="e.g. Golf 7, 2016"></div>
+          <input id="qYear" type="hidden" value="">
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Parts</legend>
+        <div class="lines" id="lines"></div>
+        <button type="button" class="btn btn--outline btn--sm add-line" id="addLine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add another part</button>
+      </fieldset>
+      <fieldset>
+        <legend>Bulk list &amp; notes</legend>
+        <label class="check-row" for="qAttach"><input id="qAttach" type="checkbox"><span>I will attach an Excel / CSV parts list to the email</span></label>
+        <div class="field" style="margin-top:16px"><label for="qNotes">Notes</label><textarea id="qNotes" placeholder="Delivery destination, required dates, or anything else we should know"></textarea></div>
+      </fieldset>
+      <div class="form-actions">
+        <button type="submit" class="btn btn--primary btn--lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>Send by Email</button>
+        <button type="button" class="btn btn--wa btn--lg" id="waBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Send via WhatsApp</button>
+        <button type="button" class="btn btn--outline" id="copyBtn" hidden>Copy request</button>
+      </div>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      <p class="muted" style="font-size:13px;margin-top:6px">"Send by Email" opens your email app with the request filled in, addressed to sales@euro-auto-center.com. Nothing is sent until you press Send.</p>
+    </form>
+    <aside>
+      <div class="bulk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
+        <h3>Have a long parts list?</h3>
+        <p>Download our Excel template, fill in the OE numbers and quantities, tick "I will attach…" and attach it to the email.</p>
+        <a class="btn btn--primary btn--sm" href="../assets/files/eac-parts-request-template.xlsx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M12 11v8"/></svg>Download Excel template</a>
+        <p style="margin:12px 0 0;font-size:13px">Excel (.xlsx, .xls) and CSV files accepted.</p>
+      </div>
+      <div class="panel" style="margin-top:20px">
+        <h2 style="font-size:18px;margin-bottom:14px">Prefer to talk?</h2>
+        <ul class="side-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:sales@euro-auto-center.com">sales@euro-auto-center.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+971505579616">+971 50 557 9616</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><a href="https://wa.me/971505579616" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <template id="lineTpl"><div class="line">
+  <div class="field"><label data-n="lOe">OE number</label><input data-n="lOe" type="text" autocomplete="off" placeholder="e.g. 1K0 615 301 AA"></div>
+  <div class="field"><label data-n="lPn">Part number</label><input data-n="lPn" type="text" autocomplete="off" placeholder="Brand part no."></div>
+  <div class="field"><label data-n="lBr">Preferred brand</label><select data-n="lBr"><option value="">Any / best offer</option><option value="ate">ATE</option><option value="beru">BERU</option><option value="blue-print">Blue Print</option><option value="boge">BOGE</option><option value="borgwarner">BorgWarner</option><option value="bosch">Bosch</option><option value="brembo">Brembo</option><option value="dayco">Dayco</option><option value="delphi">Delphi</option><option value="fag">FAG</option><option value="febi">febi</option><option value="filtron">FILTRON</option><option value="hepu">HEPU</option><option value="ina">INA</option><option value="lemforder">LEMFÖRDER</option><option value="luk">LuK</option><option value="mahle">MAHLE</option><option value="mann">MANN-FILTER</option><option value="provia">ProVia</option><option value="purflux">PURFLUX</option><option value="sachs">SACHS</option><option value="swag">SWAG</option><option value="textar">TEXTAR</option><option value="trw">TRW</option><option value="valeo">Valeo</option><option value="vdo">VDO</option><option value="vitesco">Vitesco Technologies</option><option value="wabco">WABCO</option><option value="zf-parts">ZF Parts</option></select></div>
+  <div class="field field--qty"><label data-n="lQty">Qty</label><input data-n="lQty" type="number" min="1" step="1" value="1" inputmode="numeric"></div>
+  <button type="button" class="icon-btn" aria-label="Remove line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+</div></template>
+</section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="../" class="logo" aria-label="Euro Auto Center home">
+          <span class="logo__mark"><img src="../eac-logo.png" alt="EAC" width="65" height="24"></span>
+          <span class="logo__text">EURO <span>AUTO</span><br>CENTER</span>
+        </a>
+        <p class="footer__tagline">Genuine European OEM and premium aftermarket parts, backed by accurate parts data, for the Middle East &amp; Africa.</p>
+        <div class="social"><a data-social="linkedin" aria-disabled="true" title="LinkedIn page coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>LinkedIn</a><a data-social="facebook" aria-disabled="true" title="Facebook page coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6M16 4.5a3.5 3.5 0 0 1 0 7M22 21c0-3-2-5.2-5-5.8"/></svg>Facebook</a><a data-social="instagram" aria-disabled="true" title="Instagram page coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a></div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about-us/">About Us</a></li>
+          <li><a href="../brands-catalogs/">Brands &amp; Catalogs</a></li>
+          <li><a href="../request-quote/">Request a Quote</a></li>
+          <li><a href="../downloads/">Downloads</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sales@euro-auto-center.com">sales@euro-auto-center.com</a></li>
+          <li><a href="mailto:w.saad@euro-auto-center.com">w.saad@euro-auto-center.com</a></li>
+          <li><a href="tel:+971505579616">+971 50 557 9616</a></li>
+          <li><a href="https://wa.me/971505579616" target="_blank" rel="noopener">WhatsApp us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Offices</h4>
+        <ul>
+          <li><b style="color:#fff">Headquarters</b><br>Mar Maroun Street, 33 Sector 5<br>Bouchrieh, Beirut – Lebanon</li><li><b style="color:#fff">Regional Branch</b><br>Al Shohada Road, Compass Building FDRK2383<br>Ras Al Khaimah – UAE</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Euro Auto Center. All rights reserved.</span>
+      <span>Brand names and logos are trademarks of their respective owners.</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
