@@ -8,7 +8,7 @@
   var SOCIAL = {
     linkedin: '',
     facebook: 'https://www.facebook.com/eacsarl',
-    instagram: ''
+    instagram: 'https://www.instagram.com/eacsarl/'
   };
 
   var SALES_EMAIL = 'sales@euro-auto-center.com';

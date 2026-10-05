@@ -22,7 +22,7 @@ OFFICES = [
     dict(key="beirut", label="Headquarters", city="Beirut, Lebanon",
          lines=["Mar Maroun Street, 33 Sector 5", "Bouchrieh, Beirut – Lebanon"],
          map_q="Euro Auto Center, Mar Maroun Street, Bouchrieh, Lebanon",
-         maps_link="https://maps.app.goo.gl/doYRpxkkqRisMGr18",
+         maps_link="https://maps.app.goo.gl/u8ywQ2h5j4qifzKP6",
          embed="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.9411026781154!2d35.54841807570962!3d33.89117067321812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17ed58d6ca99%3A0x70f23d3f3f8adf11!2sEuro%20Auto%20Center!5e0!3m2!1sen!2slb!4v1791208981595!5m2!1sen!2slb",
          ld=dict(street="Mar Maroun Street, 33 Sector 5, Bouchrieh", city="Beirut", country="LB")),
     dict(key="rak", label="Regional Branch", city="Ras Al Khaimah, UAE",
