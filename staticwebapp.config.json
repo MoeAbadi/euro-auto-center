@@ -16,6 +16,12 @@
       }
     },
     {
+      "route": "/assets/files/*",
+      "headers": {
+        "Content-Disposition": "attachment"
+      }
+    },
+    {
       "route": "/_src/*",
       "statusCode": 404
     },
@@ -30,5 +36,10 @@
       "statusCode": 302
     }
   },
-  "trailingSlash": "auto"
+  "trailingSlash": "auto",
+  "mimeTypes": {
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".xls": "application/vnd.ms-excel",
+    ".csv": "text/csv"
+  }
 }
