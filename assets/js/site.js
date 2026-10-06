@@ -12,7 +12,6 @@
   };
 
   var SALES_EMAIL = 'sales@euro-auto-center.com';
-  var WHATSAPP = '96170153623';
 
   document.documentElement.classList.remove('no-js');
 
@@ -148,7 +147,6 @@
       if (val('qCompany')) out.push('Company: ' + val('qCompany'));
       if (val('qCountry')) out.push('Country: ' + val('qCountry'));
       out.push('Email: ' + val('qEmail'));
-      if (val('qPhone')) out.push('Phone / WhatsApp: ' + val('qPhone'));
       var veh = [val('qMake'), val('qModel'), val('qYear')].filter(Boolean).join(' ');
       if (veh || val('qVin')) {
         out.push('');
@@ -219,12 +217,6 @@
       copyBtn.hidden = false;
     });
 
-    document.getElementById('waBtn').addEventListener('click', function () {
-      if (!validate()) return;
-      window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildText()), '_blank', 'noopener');
-      msg.className = 'form-msg ok';
-      msg.textContent = 'WhatsApp is opening with your request. If you have a parts list file, send it in the same chat.';
-    });
 
     copyBtn.addEventListener('click', function () {
       var text = 'To: ' + SALES_EMAIL + '\nSubject: ' + subject() + '\n\n' + buildText();

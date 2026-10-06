@@ -12,20 +12,16 @@ SITE = "https://www.euroautocenterllc.com"
 PDF = "euro-auto-center_profile.pdf"
 TEMPLATE_XLSX = "assets/files/quotation-request-template.xlsx"  # maintained by hand in the repo; not generated
 E = html.escape
+import hashlib
+def _v(name):
+    return hashlib.md5(open(os.path.join(SRC, name), "rb").read()).hexdigest()[:8]
+ASSET_V = {"css": _v("site.css"), "js": _v("site.js")}
 
 SALES = "sales@euro-auto-center.com"
 DIRECT = "w.saad@euro-auto-center.com"
-WA_DISPLAY = "+961 70 153 623"  # WhatsApp messages only (no phone calls)
-WA = "https://wa.me/96170153623"
 
 OFFICES = [
-    dict(key="beirut", label="Headquarters", city="Beirut, Lebanon",
-         lines=["Mar Maroun Street, 33 Sector 5", "Bouchrieh, Beirut – Lebanon"],
-         map_q="Euro Auto Center, Mar Maroun Street, Bouchrieh, Lebanon",
-         maps_link="https://maps.app.goo.gl/u8ywQ2h5j4qifzKP6",
-         embed="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.9411026781154!2d35.54841807570962!3d33.89117067321812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17ed58d6ca99%3A0x70f23d3f3f8adf11!2sEuro%20Auto%20Center!5e0!3m2!1sen!2slb!4v1791208981595!5m2!1sen!2slb",
-         ld=dict(street="Mar Maroun Street, 33 Sector 5, Bouchrieh", city="Beirut", country="LB")),
-    dict(key="rak", label="Regional Branch", city="Ras Al Khaimah, UAE",
+    dict(key="rak", label="Headquarters", city="Ras Al Khaimah, UAE",
          lines=["Al Shohada Road, Compass Building FDRK2383", "Ras Al Khaimah – UAE"],
          map_q="Compass Building, Al Shohada Road, Ras Al Khaimah, United Arab Emirates",
          ld=dict(street="Al Shohada Road, Compass Building FDRK2383", city="Ras Al Khaimah", country="AE")),
@@ -137,7 +133,7 @@ def page(path, title, desc, body, active="", extra_head=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{r}assets/css/site.css">
+<link rel="stylesheet" href="{r}assets/css/site.css?v={ASSET_V['css']}">
 {extra_head}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -183,11 +179,10 @@ def page(path, title, desc, body, active="", extra_head=""):
         <ul>
           <li><a href="mailto:{SALES}">{SALES}</a></li>
           <li><a href="mailto:{DIRECT}">{DIRECT}</a></li>
-          <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp: {WA_DISPLAY}</a></li>
         </ul>
       </div>
       <div>
-        <h4>Offices</h4>
+        <h4>Headquarters</h4>
         <ul>
           {"".join(f'<li><b style="color:#fff">{o["label"]}</b><br>{"<br>".join(E(l) for l in o["lines"])}</li>' for o in OFFICES)}
         </ul>
@@ -199,7 +194,7 @@ def page(path, title, desc, body, active="", extra_head=""):
     </div>
   </div>
 </footer>
-<script src="{r}assets/js/site.js" defer></script>
+<script src="{r}assets/js/site.js?v={ASSET_V['js']}" defer></script>
 </body>
 </html>
 '''
@@ -275,7 +270,7 @@ def build():
     <div class="badges">
       <div class="badge"><span class="badge__icon">{I["shield"]}</span><div><strong>Genuine Parts</strong><span>Authorized brands, full traceability</span></div></div>
       <div class="badge"><span class="badge__icon">{I["target"]}</span><div><strong>OE-Matched</strong><span>Identified by OE number and VIN</span></div></div>
-      <div class="badge"><span class="badge__icon">{I["pin"]}</span><div><strong>RAK Base</strong><span>Regional branch in Ras Al Khaimah, UAE</span></div></div>
+      <div class="badge"><span class="badge__icon">{I["pin"]}</span><div><strong>UAE Based</strong><span>Headquartered in Ras Al Khaimah, UAE</span></div></div>
       <div class="badge"><span class="badge__icon">{I["globe"]}</span><div><strong>Regional Reach</strong><span>Supplying the Middle East &amp; Africa</span></div></div>
     </div>
   </div>
@@ -324,7 +319,7 @@ def build():
 {cta_profile()}
 '''
     urls.append(page("index.html", "Euro Auto Center | European OEM & Aftermarket Auto Parts",
-                     f"Euro Auto Center supplies genuine European OEM and premium aftermarket parts from {len(BRANDS)} authorized brands across the Middle East & Africa, from Beirut and Ras Al Khaimah.",
+                     f"Euro Auto Center supplies genuine European OEM and premium aftermarket parts from {len(BRANDS)} authorized brands across the Middle East & Africa from Ras Al Khaimah, UAE.",
                      home, "", ld_org()))
 
     # ---- About ----
@@ -342,12 +337,12 @@ def build():
     <div class="about__text reveal">
       <span class="eyebrow">Who We Are</span>
       <h2 style="font-size:clamp(28px,4vw,38px);margin:14px 0 20px">Genuine European parts, delivered with precision.</h2>
-      <p>Euro Auto Center is headquartered in Beirut, Lebanon, with a regional branch in Ras Al Khaimah, UAE. We specialize in European OEM and quality aftermarket parts and supply customers across the Middle East &amp; Africa.</p>
+      <p>Euro Auto Center is headquartered in Ras Al Khaimah, United Arab Emirates. We specialize in European OEM and quality aftermarket parts and supply customers across the Middle East &amp; Africa.</p>
       <p>We combine a strong supply network of {len(BRANDS)} authorized brands with structured parts data, so every order is identified correctly, sourced quickly, and delivered with full traceability.</p>
       <ul class="checklist">
         <li><span class="check">{I["check"]}</span>Genuine and quality-approved brands only</li>
         <li><span class="check">{I["check"]}</span>Accurate part identification by OE number and VIN</li>
-        <li><span class="check">{I["check"]}</span>Two offices covering the Levant and the Gulf</li>
+        <li><span class="check">{I["check"]}</span>UAE headquarters serving the Gulf, Middle East &amp; Africa</li>
       </ul>
     </div>
     <div class="reveal">{offices_html}</div>
@@ -380,7 +375,7 @@ def build():
 {cta_profile()}
 '''
     urls.append(page("about-us/index.html", "About Us | Euro Auto Center",
-                     "Euro Auto Center is a European auto parts distributor headquartered in Beirut, Lebanon, with a regional branch in Ras Al Khaimah, UAE.",
+                     "Euro Auto Center is a European auto parts distributor headquartered in Ras Al Khaimah, United Arab Emirates.",
                      about, "about-us/"))
 
     # ---- Brands hub ----
@@ -463,7 +458,7 @@ def build():
     <div class="section-head reveal"><span class="eyebrow">How to order</span><h2>Get {E(b["name"])} parts in three steps.</h2></div>
     <ol class="steps reveal">
       <li><h3>Find the part</h3><p>Look it up in the {E(b["name"])} online catalog, or simply send us the OE number or your VIN.</p></li>
-      <li><h3>Request a quote</h3><p>Send the part numbers and quantities through our quote form, by email or on WhatsApp.</p></li>
+      <li><h3>Request a quote</h3><p>Send the part numbers and quantities through our quote form or by email.</p></li>
       <li><h3>Confirm &amp; receive</h3><p>We confirm availability, price and lead time, then dispatch to you.</p></li>
     </ol>
   </div>
@@ -506,8 +501,7 @@ def build():
           <div class="field"><label for="qName">Full name *</label><input id="qName" type="text" autocomplete="name" required></div>
           <div class="field"><label for="qCompany">Company <small>(optional)</small></label><input id="qCompany" type="text" autocomplete="organization"></div>
           <div class="field"><label for="qEmail">Email *</label><input id="qEmail" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="qPhone">Phone / WhatsApp</label><input id="qPhone" type="tel" autocomplete="tel"></div>
-          <div class="field field--full"><label for="qCountry">Country</label><input id="qCountry" type="text" autocomplete="country-name"></div>
+          <div class="field"><label for="qCountry">Country</label><input id="qCountry" type="text" autocomplete="country-name"></div>
         </div>
       </fieldset>
       <fieldset>
@@ -531,7 +525,6 @@ def build():
       </fieldset>
       <div class="form-actions">
         <button type="submit" class="btn btn--primary btn--lg">{I["mail"]}Send by Email</button>
-        <button type="button" class="btn btn--wa btn--lg" id="waBtn">{I["chat"]}Send via WhatsApp</button>
         <button type="button" class="btn btn--outline" id="copyBtn" hidden>Copy request</button>
       </div>
       <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
@@ -549,7 +542,6 @@ def build():
         <h2 style="font-size:18px;margin-bottom:14px">Prefer to talk?</h2>
         <ul class="side-list">
           <li>{I["mail"]}<a href="mailto:{SALES}">{SALES}</a></li>
-          <li>{I["chat"]}<a href="{WA}" target="_blank" rel="noopener">WhatsApp {WA_DISPLAY}</a></li>
         </ul>
       </div>
     </aside>
@@ -558,7 +550,7 @@ def build():
 </section>
 '''
     urls.append(page("request-quote/index.html", "Request a Quote | Euro Auto Center",
-                     "Request a quotation for European OEM and aftermarket parts. Send OE numbers, part numbers, quantities and VIN by email or WhatsApp, or attach an Excel parts list.",
+                     "Request a quotation for European OEM and aftermarket parts. Send OE numbers, part numbers, quantities and VIN by email, or attach an Excel parts list.",
                      quote, "request-quote/"))
 
     # ---- Downloads ----
@@ -631,13 +623,12 @@ def build():
     <div class="contact-grid">
       <a class="contact-card reveal" href="mailto:{SALES}"><span class="contact-card__icon">{I["mail"]}</span><span class="contact-card__label">Sales &amp; Quotes</span><span class="contact-card__value">{SALES}</span><span class="contact-card__hint">General and quotation requests</span></a>
       <a class="contact-card reveal" href="mailto:{DIRECT}"><span class="contact-card__icon">{I["user"]}</span><span class="contact-card__label">Commercial Contact</span><span class="contact-card__value">{DIRECT}</span><span class="contact-card__hint">Accounts and partnerships</span></a>
-      <a class="contact-card reveal" href="{WA}" target="_blank" rel="noopener"><span class="contact-card__icon">{I["chat"]}</span><span class="contact-card__label">WhatsApp</span><span class="contact-card__value">{WA_DISPLAY}</span><span class="contact-card__hint">Messages only: send part numbers, lists and photos</span></a>
     </div>
   </div>
 </section>
 <section class="section section--soft">
   <div class="container">
-    <div class="section-head"><span class="eyebrow">Our Locations</span><h2>Visit or reach our offices.</h2></div>
+    <div class="section-head"><span class="eyebrow">Our Location</span><h2>Visit our headquarters.</h2></div>
     {locs}
   </div>
 </section>
@@ -650,7 +641,7 @@ def build():
 </section>
 '''
     urls.append(page("contact/index.html", "Contact | Euro Auto Center",
-                     f"Contact Euro Auto Center: {SALES}, WhatsApp {WA_DISPLAY}. Headquarters in Beirut, Lebanon, and regional branch in Ras Al Khaimah, UAE.",
+                     f"Contact Euro Auto Center: {SALES}. Headquarters in Ras Al Khaimah, United Arab Emirates.",
                      contact, "contact/", ld_org()))
 
     # ---- assets ----
@@ -713,8 +704,7 @@ def make_template(path):
     ws.freeze_panes = "A5"
     ws.auto_filter.ref = "A4:I204"
     info = wb.create_sheet("Contact")
-    for i, (k, v) in enumerate([("Email", SALES), ("Commercial", DIRECT), ("WhatsApp (messages)", WA_DISPLAY),
-                                ("Headquarters", ", ".join(OFFICES[0]["lines"])), ("Regional Branch", ", ".join(OFFICES[1]["lines"])),
+    for i, (k, v) in enumerate([("Email", SALES), ("Commercial", DIRECT), ("Headquarters", ", ".join(OFFICES[0]["lines"])),
                                 ("Website", SITE)], start=1):
         info.cell(row=i, column=1, value=k).font = Font(bold=True)
         info.cell(row=i, column=2, value=v)
