@@ -6,9 +6,9 @@
      Paste each profile link between the quotes once the account exists.
      Icons with an empty link show as "soon" and are not clickable. */
   var SOCIAL = {
-    linkedin: '',
-    facebook: 'https://www.facebook.com/eacsarl',
-    instagram: 'https://www.instagram.com/eacsarl/'
+    linkedin: 'https://www.linkedin.com/company/eacllc',
+    facebook: 'https://www.facebook.com/eacllc',
+    instagram: 'https://www.instagram.com/eac_llc/'
   };
 
   var SALES_EMAIL = 'sales@euro-auto-center.com';
