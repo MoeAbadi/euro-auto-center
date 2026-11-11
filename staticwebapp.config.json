@@ -26,6 +26,10 @@
       "statusCode": 404
     },
     {
+      "route": "/redirect/*",
+      "statusCode": 404
+    },
+    {
       "route": "/.github/*",
       "statusCode": 404
     }
